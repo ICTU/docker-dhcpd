@@ -1,0 +1,14 @@
+ddns-update-style none;
+
+default-lease-time 600;
+max-lease-time 7200;
+
+subnet _SUBNET_ netmask _NETMASK_ {
+    range _RANGE_;
+
+    # fixed host example
+    #host hostnam1 {
+    #        hardware ethernet 00:50:56:88:70:90;
+    #        fixed-address 10.19.88.248;
+    #}
+}
