@@ -1,7 +1,11 @@
-ddns-update-style none;
-
+option option-128 code 128 = string;
+option option-129 code 129 = text;
+option domain-name-servers 10.19.55.1;
+option routers _GATEWAY_;
 default-lease-time 600;
 max-lease-time 7200;
+allow duplicates;
+next-server _MYIP_;
 
 subnet _SUBNET_ netmask _NETMASK_ {
     range _RANGE_;

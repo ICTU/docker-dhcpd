@@ -13,6 +13,8 @@ RUN chmod +x /dhcpd.sh /pipework
 ENV SUBNET _
 ENV NETMASK _
 ENV RANGE _
+ENV GATEWAY _
+ENV MYIP _
 
 EXPOSE 67
 EXPOSE 67/udp
