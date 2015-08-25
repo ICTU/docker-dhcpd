@@ -3,7 +3,7 @@ option option-129 code 129 = text;
 option domain-name-servers 10.19.55.1;
 option routers _GATEWAY_;
 default-lease-time 600;
-max-lease-time 7200;
+max-lease-time 1800;
 allow duplicates;
 next-server _MYIP_;
 
