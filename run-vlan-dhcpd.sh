@@ -17,12 +17,10 @@ fi
 
 vlanid=$1
 netif=$2
+octet3=$(($vlanid - 3000))
 
-vlan="30$vlanid"
-if [ ${#vlanid} -ge 3 ]; then vlan="3$vlanid"; fi
-
-docker kill dhcp-$vlan; docker rm dhcp-$vlan;
-docker run -d -e "MYIP=10.25.$vlanid.1" -e "GATEWAY=10.25.$vlanid.254" -e "SUBNET=10.25.$vlanid.0" -e "NETMASK=255.255.255.0" -e "RANGE=10.25.$vlanid.10 10.25.$vlanid.250" --name dhcp-$vlan docker-registry.isd.ictu:5000/docker-dhcpd
+docker kill dhcp-$vlanid; docker rm dhcp-$vlanid;
+docker run -d -e "MYIP=10.25.$octet3.1" -e "GATEWAY=10.25.$octet3.254" -e "SUBNET=10.25.$octet3.0" -e "NETMASK=255.255.255.0" -e "RANGE=10.25.$octet3.10 10.25.$octet3.250" --name dhcp-$vlanid docker-registry.isd.ictu:5000/docker-dhcpd
 
 if [ -f "/opt/bin/pipework" ]; then
   pipework="/opt/bin/pipework"
@@ -36,4 +34,4 @@ fi
 
 echo "script is $pipework"
 
-"$pipework" "$netif" dhcp-$vlan 10.25.$vlanid.1/24@10.25.$vlanid.254 @"$vlan"
+"$pipework" "$netif" dhcp-$vlanid 10.25.$octet3.1/24@10.25.$octet3.254 @"$vlanid"
