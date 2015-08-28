@@ -26,4 +26,4 @@ EXPOSE 847
 EXPOSE 847/udp
 
 ENTRYPOINT ["/dhcpd.sh"]
-CMD ["-f", "-cf", "/data/dhcpd.conf", "-lf", "/data/dhcpd.leases", "--no-pid"]
+CMD ["-f", "-cf", "/config/dhcpd.conf", "-lf", "/data/dhcpd.leases", "--no-pid"]
