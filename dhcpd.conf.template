@@ -1,6 +1,6 @@
 option option-128 code 128 = string;
 option option-129 code 129 = text;
-option domain-name-servers _DNS1_ _DNS2_;
+option domain-name-servers _NAMESERVERS_;
 option routers _GATEWAY_;
 default-lease-time _DEFAULT-LEASE-TIME_;
 max-lease-time _MAX-LEASE-TIME_;
