@@ -1,9 +1,9 @@
 option option-128 code 128 = string;
 option option-129 code 129 = text;
-option domain-name-servers 10.19.55.1;
+option domain-name-servers _DNS1_ _DNS2_;
 option routers _GATEWAY_;
-default-lease-time 600;
-max-lease-time 1800;
+default-lease-time _DEFAULT-LEASE-TIME_;
+max-lease-time _MAX-LEASE-TIME_;
 allow duplicates;
 next-server _MYIP_;
 

@@ -20,6 +20,10 @@ if [ ! -f /config/dhcpd.conf ]; then
   sed -i "s/_RANGE_/$RANGE/g" /config/dhcpd.conf
   sed -i "s/_MYIP_/$MYIP/g" /config/dhcpd.conf
   sed -i "s/_GATEWAY_/$GATEWAY/g" /config/dhcpd.conf
+  sed -i "s/_DNS1_/$DNS1/g" /config/dhpcd.conf
+  sed -i "s/_DNS2_/$DNS2/g" /config/dhcpd.conf
+  sed -i "s/_DEFAULT-LEASE-TIME_/$DEFAULT_LEASE_TIME/g" /config/dhcpd.conf
+  sed -i "s/_MAX-LEASE-TIME_/$MAX_LEASE_TIME/g" /config/dhcpd.conf
 fi
 
 if [ ! -f /data/dhcpd.leases ]; then
