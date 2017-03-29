@@ -1,0 +1,42 @@
+log-facility local7;
+allow booting;
+allow bootp;
+option option-128 code 128 = string;
+option option-129 code 129 = text;
+option domain-name-servers _NAMESERVERS_;
+option routers _GATEWAY_;
+default-lease-time _DEFAULT_LEASE_TIME_;
+max-lease-time _MAX_LEASE_TIME_;
+allow duplicates;
+next-server _SERVER_IP_;
+filename "/pxelinux.0";
+
+class "coreos" {
+        match if binary-to-ascii(16, 8, ":", substring (hardware, 1, 3)) = "0:50:56";
+}
+
+subnet _SUBNET_ netmask _NETMASK_ {
+
+        pool {
+		# This pool is dedicated for pxe booted servers
+                allow members of "coreos";
+                range _RANGE_PXE_;
+        }
+
+        pool {
+                # Don't use this pool. It is really just a range to reserve
+                # for fixed addresses defined per host, above.
+                allow known-clients;
+                range _RANGE_STATIC_;
+        }
+
+        pool {
+                # This pool is dedicated for all other clients
+                allow unknown-clients;
+                range _RANGE_OTHER_;
+        }
+
+}
+
+# known-clients
+include "/etc/dhcpd-reservations.conf";
