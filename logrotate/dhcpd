@@ -1,7 +1,7 @@
 /var/log/dhcpd/dhcpd.log {
     rotate 2
     daily
-    create
+    copytruncate
     missingok
     delaycompress
     compress
