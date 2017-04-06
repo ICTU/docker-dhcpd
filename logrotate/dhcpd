@@ -5,4 +5,8 @@
     missingok
     delaycompress
     compress
+    size 50M
+    postrotate
+        /etc/init.d/rsyslog reload &>/dev/null || true
+    endscript
 }
