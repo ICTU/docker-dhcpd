@@ -3,10 +3,8 @@
     daily
     copytruncate
     missingok
-    delaycompress
-    compress
     size 50M
     postrotate
-        /etc/init.d/rsyslog reload &>/dev/null || true
+        supervisorctl restart rsyslog &>/dev/null || true
     endscript
 }

@@ -7,6 +7,7 @@ ADD dhcpd/dhcpd-reservations.conf /etc/dhcpd-reservations.conf
 ADD supervisor/supervisord.conf /etc/supervisord.conf
 ADD rsyslogd/rsyslog.conf /etc/rsyslog.conf
 ADD supervisor/conf.d /usr/share/supervisor/conf.d/
+ADD logrotate/logrotate.conf /etc/logrotate.conf
 ADD logrotate/dhcpd /etc/logrotate.d/dhcpd
 
 ENV SUBNET= NETMASK= RANGE_PXE= RANGE_STATIC= RANGE_OTHER= GATEWAY= SERVER_IP= NAMESERVERS= \
